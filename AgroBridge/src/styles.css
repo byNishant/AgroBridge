@@ -1,0 +1,256 @@
+/* AgroBridge — Design System & Global Styles
+   Agricultural palette: Emerald primary, Amber accent, Slate background.
+   8px spacing system, smooth rounded corners, clean card shadows.
+*/
+
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #a7f3d0;
+  --color-brand-300: #6ee7b7;
+  --color-brand-400: #34d399;
+  --color-brand-500: #10b981;
+  --color-brand-600: #15803d;
+  --color-brand-700: #047857;
+  --color-brand-800: #065f46;
+  --color-brand-900: #064e3b;
+  --color-brand-950: #022c22;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-800: #92400e;
+  --color-accent-900: #78350f;
+
+  --color-slate-bg: #f8fafc;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-hindi: "Noto Sans Devanagari", system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-slate-bg);
+  color: #1e293b;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.lang-hi {
+  font-family: var(--font-hindi);
+}
+
+/* ===== Animations ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scanLine {
+  0% { top: 8%; }
+  50% { top: 88%; }
+  100% { top: 8%; }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  70% { transform: scale(1.1); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes growBar {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.45s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-bounce-soft {
+  animation: bounceSoft 2s ease-in-out infinite;
+}
+
+/* Scanner animation */
+.scanner-line {
+  animation: scanLine 2.5s ease-in-out infinite;
+}
+
+.pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* Stagger helpers */
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+.stagger-5 { animation-delay: 0.40s; }
+.stagger-6 { animation-delay: 0.48s; }
+
+/* ===== Tab transition wrapper ===== */
+.tab-panel {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+/* ===== Card shadow ===== */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -8px rgba(0,0,0,0.08);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 40px -12px rgba(0,0,0,0.12);
+}
+
+/* ===== Custom scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===== Range slider styling ===== */
+input[type="range"].agro-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-brand-500) var(--val, 50%), #e2e8f0 var(--val, 50%));
+  outline: none;
+}
+input[type="range"].agro-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-brand-600);
+  border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(21,128,61,0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+input[type="range"].agro-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"].agro-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-brand-600);
+  border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(21,128,61,0.35);
+  cursor: pointer;
+}
+
+/* ===== Focus styles ===== */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21,128,61,0.15);
+  border-color: var(--color-brand-500) !important;
+}
+
+/* ===== Status badge colors ===== */
+.status-booked { background: #dbeafe; color: #1e40af; }
+.status-entered { background: #fef3c7; color: #92400e; }
+.status-weighing { background: #e0e7ff; color: #3730a3; }
+.status-completed { background: #d1fae5; color: #065f46; }
+
+/* ===== Congestion indicator dot ===== */
+.congestion-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.congestion-green { background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.2); }
+.congestion-amber { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.2); }
+.congestion-red { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,0.2); animation: bounceSoft 1s ease-in-out infinite; }
+
+/* Print-friendly gate pass */
+@media print {
+  .no-print { display: none !important; }
+}
